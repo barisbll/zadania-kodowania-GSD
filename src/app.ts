@@ -1,15 +1,7 @@
-import express from "express";
-import cors from "cors";
-import { json } from "body-parser";
-
-import route from "./routes/route";
 import { get404 } from "./controller/404";
+import createServer from "./util/server";
 
-const app = express();
-
-app.use(cors());
-app.use(json());
-app.use(route);
+const app = createServer();
 
 app.listen(8080);
 
