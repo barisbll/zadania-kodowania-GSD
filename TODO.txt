@@ -1,3 +1,0 @@
-Make all the apis return the same response structure with give parameters
-
-Use design patterns

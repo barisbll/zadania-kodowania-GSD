@@ -1,0 +1,97 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "weatherApi",
+    "description": "a node.js coding task that inspects candidate's design patterns knowledge",
+    "licence": {
+      "name": "MIT",
+      "url": "https://opensource.org/licence/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "Weather",
+      "description": "API for weather data of a defined location"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/weather": {
+      "get": {
+        "tags": ["Weather"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "loc",
+            "description": "Location of a city"
+          },
+          {
+            "in": "query",
+            "name": "lat",
+            "description": "Latitude of a location"
+          },
+          {
+            "in": "query",
+            "name": "lon",
+            "description": "Longitude of a location"
+          }
+        ],
+        "summary": "Get weather data of a location",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/responseObject"
+            }
+          },
+          "404": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#definitions/error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "responseObject": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "object",
+          "properties": {
+            "lon": {
+              "type": "string"
+            },
+            "lat": {
+              "type": "string"
+            },
+            "weather": {
+              "type": "string"
+            },
+            "cityName": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
